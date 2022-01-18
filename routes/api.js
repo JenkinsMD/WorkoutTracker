@@ -1,7 +1,9 @@
 const router = require("express").Router();
 const { db } = require("../models/workout.js");
 const Workout = require("../models/workout.js");
+//Sets up routes
 
+//Post route to database
 router.post("/api/workouts", ({ body }, res) => {
   Workout.create(body)
     .then(dbWorkout => {
@@ -12,7 +14,7 @@ router.post("/api/workouts", ({ body }, res) => {
     });
 });
 
-//Was /api/workout
+//gets workouts from database
 router.get("/api/workouts", (req, res) => {
 
     Workout.aggregate([
@@ -32,29 +34,7 @@ router.get("/api/workouts", (req, res) => {
   });
 });
 
-//Exercise GET Route - Placeholder
-// router.get("/exercise", (req, res) => {
-//   Workout.find({})
-//     .sort({ date: -1 })
-//     .then(dbWorkout => {
-//       res.json(dbWorkout);
-//     })
-//     .catch(err => {
-//       res.status(400).json(err);
-//     });
-// });
 
-//Stats GET Route - Place Holder
-// router.get("/stats", (req, res) => {
-//   Workout.find({})
-//     .sort({ date: -1 })
-//     .then(dbWorkout => {
-//       res.json(dbWorkout);
-//     })
-//     .catch(err => {
-//       res.status(400).json(err);
-//     });
-// });
 
 //Add get workouts/range
 router.get("/api/workouts/range", (req, res) => {
